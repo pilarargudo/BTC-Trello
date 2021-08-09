@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- NUEVA LISTA -->
+    <div class="col">
+      <form class="form-inline">
+        <div class="form-group m3">
+          <input
+          placeholder="Introduce el título..."
+					class="form-control" #addListInput type="text" autofocus>
+        </div>
+        <button type="submit" class="btn btn-success m-3" (click)="addList(addListInput.value, $event); addListInput.value=''">
+          <i class="fas fa-plus-square"></i>
+          <fa-icon [icon]="faPlus"></fa-icon>
+          <span>Añadir nueva lista</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LISTAS-->
+  <div class="row">
+    <app-list class="col" *ngFor="let list of lists"       
+      [list]="list" 
+      [cardStore]="cardStore"
+      (deletedChange)='deleteList(list)'></app-list>
+    </div>
+</div>
+
+
+
+  
+

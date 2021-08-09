@@ -1,0 +1,30 @@
+<div class="dragAndDrop" (dragover)="allowDrop($event)" (drop)="drop($event)">
+	<div class="card">
+		<div class="list_title card-header bg-info">
+			<strong>{{list.name}}</strong>
+			<button class="btn btn-primary btn-small float-right" ngbTooltip="Borrar lista"
+							(click)="deleteList(list.name)">
+				<fa-icon [icon]="faTrash"></fa-icon>
+			</button>
+		</div>
+
+		<div class="card-body cards">
+			<app-card *ngFor="let cardId of list.cards" 
+			[card]="cardStore.getCard(cardId)"
+			(deletedChange)='deleteCard(cardId)'></app-card>
+		</div>
+
+		<div class="card-footer">
+			<input *ngIf="displayAddCard"
+						placeholder="Escribe aquí y pulsa Enter..."
+						class="card" #addCardInput type="text" autofocus
+						(keyup.enter)="onEnter(addCardInput.value); addCardInput.value=''; displayAddCard=false;">
+
+			<button class="btn btn-warning float-right" (click)="toggleDisplayAddCard();"
+			ngbTooltip="Añadir nueva tarjeta">
+				<i class="fas fa-plus-square"></i>
+				<fa-icon [icon]="faPlus"></fa-icon>
+			</button>
+		</div>
+	</div>
+</div>

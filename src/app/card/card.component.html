@@ -1,0 +1,11 @@
+<div class="card" draggable="true" (dragstart)="dragStart($event)" id="{{card.id}}">
+  <div class="card-body">
+    {{card.description}}
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-danger btn-small float-right" ngbTooltip="Borrar tarjeta"
+            (click)="deleteCard(card.id)">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+  </div>
+</div>
